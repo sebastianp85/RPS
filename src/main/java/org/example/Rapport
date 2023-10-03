@@ -1,0 +1,31 @@
+Jag började med att tänka vilka de stora komponenterna i spelet var och skapade klasser efter detta.
+De klasser jag kom fram till först var Player, Opponent och en Game klass där logiken för själva spelet skulle vara.
+
+Jag valde även att skapa en MainMenu klass likt lektionen vi haft tidigare för att flytta ut en del kod från Main klassen.
+
+Jag började först med att utveckla spelet enligt G kriterierna för att sedan bygga om en del för att kunna uppnå de högre betyget.
+I min Player klass valde jag att använda mig av Singleton för att säkerställa att de bara fanns en instans av spelaren
+vilket underlättar för att hantera statistiken av poäng och spelade matcher samt minskar risken för felen i koden om olika spelare hade skapats.
+
+När jag sedan skulle ha 3 olika motståndare så valde jag att göra om Opponent klassen till en abstract klass som subklasserna sedan kunde ärva ifrån.
+Då utnyttjar jag även SOLID principen Open-Closed för att enkelt kunna utöka med fler motståndartyper utan att behöva ändra i min befintliga
+Opponent klass som annars hade kunnat förstöra funktionaliteten i koden.
+
+Jag tillämpar även Liskov principen då den abstrakta klassen Opponent har metoden makeChoice() som alla underklasser av Opponent implementerar.
+Eftersom Opponent är en abstrakt klass som definierar metoden makeChoice som används av de andra konkreta klasserna som skapas så
+tillämpas även Factory pattern då vi kan skapa nya motståndare utan att behöva ändra koden.
+
+För att kunna hantera matchhistorik och statistik så fick jag även skapa två nya klasser, MatchHistory och Statistics.
+
+Fördelar:
+Genom att använda sig av OOP så gör de koden mer läsbar och enklare att underhålla.
+Det underlättar även vid felsökning och buggar i koden om den är strukturerad i olika klasser som ansvarar för olika funktioner i programmet.
+Genom att använda arv och abstraktioner så minskar jag på upprepningar i koden då vi kan använda samma kod till flera olika objekt.
+Om man exempelvis skulle vilja lägga till ytterligare en motståndartyp nu så är det väldigt enkelt med den strukturen som jag har byggt upp.
+
+Nackdelar:
+De nackdelar jag ser man OOP är att koden blir mer komplex och svårare att se hur allting hänger ihop, speciellt nu i början när man inte har någon längre erfarenhet inom OOP.
+Jag tror även att där finns en risk att man kan överarbeta sin kod och göra den onödigt komplex om man fokuserar för mycket på att följa alla principer,
+speciellt i mindre projekt där kodbasen inte är så stor.
+I stora projekt tror jag dock att fördelarna bli ännu tydligare när man bryter upp koden
+för att inte få alltför mycket kod i samma metoder som då kan bli svåra att läsa och felsöka.
